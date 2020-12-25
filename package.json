@@ -1,0 +1,21 @@
+{
+  "name": "pdfmanipulator",
+  "version": "1.0.0",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newidentity1/PdfManipulator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/newidentity1/PdfManipulator/issues"
+  },
+  "homepage": "https://github.com/newidentity1/PdfManipulator#readme",
+  "description": ""
+}
