@@ -1,3 +1,5 @@
 function onCombinePdf() {
-    console.log('allo');
+    var pdfList = document.getElementById('pdfs_selected').files;
+    console.log(pdfList);
+    debugger
 }
