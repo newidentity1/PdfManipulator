@@ -8,10 +8,10 @@
 
 <body>
     <h1>Pdf Manipulator</h1>
-    <form method="POST" action="http://localhost:3000/">
+    <form method="POST" action="http://localhost:3000/" enctype="multipart/form-data">
         <div>
             <label for="pdfs_selected">Select a pdf:</label>
-            <input type="file" id="pdfs_selected" name="pdfSelected" accept="application/pdf" multiple>
+            <input type="file" id="pdfs_selected" name="pdfs_selected" accept="application/pdf" multiple>
         </div>
         <input type="submit" onclick="onCombinePdf()" value="Combine">
     </form>
