@@ -4,6 +4,7 @@ const multer = require("multer");
 const PdfLib = require("pdf-lib");
 const path = require("path");
 const fs = require('fs');
+const { PDFFont } = require("pdf-lib");
 
 const PDFDocument = PdfLib.PDFDocument;
 const port = 3000;
@@ -26,7 +27,7 @@ const storage = multer.diskStorage({
 });
 
 async function createPdf(pdfFiles) {
-  var mergedPdfDoc = await PDFDocument.create();
+  const mergedPdfDoc = await PDFDocument.create();
 
   for (const pdfFile of pdfFiles) {
     const pdf = await PDFDocument.load(fs.readFileSync(pdfFile.path));
@@ -34,23 +35,24 @@ async function createPdf(pdfFiles) {
     copyPdf.forEach((page)=> mergedPdfDoc.addPage(page));
   }
 
-  var pdfBytes = await mergedPdfDoc.save();
-  var pdfBuffer = Buffer.from(pdfBytes.buffer, "binary");
-  return pdfBuffer;
+  const pdfBytes = await mergedPdfDoc.save();
+  const pdfFileName = '123.pdf';
+  fs.appendFileSync(pdfFileName, pdfBytes);
+  return pdfFileName;
 }
 
 app.post("/", (req, res) => {
-    const uploadPdf= multer({
+    const uploadPdf = multer({
       storage: storage,
     }).array("pdfs_selected", 10);
 
     uploadPdf(req, res, function(err) {
       const files = req.files;
       createPdf(files)
-        .then(function (pdfBuffer) {
+        .then(function (pdfFileName) {
           res.status(200);
           res.type("pdf");
-          res.send(pdfBuffer);
+          res.download(pdfFileName);
         })
         .catch(function (err) {
           res.status(500);
