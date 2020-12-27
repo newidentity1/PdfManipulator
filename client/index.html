@@ -11,10 +11,15 @@
     <form method="POST" action="http://localhost:3000/" enctype="multipart/form-data">
         <div>
             <label for="pdfs_selected">Select a pdf:</label>
-            <input type="file" id="pdfs_selected" name="pdfs_selected" accept="application/pdf" multiple>
+            <input type="file" id="pdfs_selected" name="pdfs_selected" accept="application/pdf" onchange="onFileInputChange()" multiple>
         </div>
-        <input type="submit" onclick="onCombinePdf()" value="Combine">
     </form>
+    <div id="filesWrapper">
+        <ul id="filesList">
+
+        </ul>
+    </div>
+    <button onclick="onCombinePdf()">Combine</button>
 </body>
 
 </html>
