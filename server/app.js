@@ -37,7 +37,7 @@ async function createPdf(pdfFiles) {
   }
 
   const pdfBytes = await mergedPdfDoc.save();
-  const pdfFileName = "uploads/" + "merged" + Date.now() + ".pdf";
+  const pdfFileName = "uploads/" + "merged.pdf";
   fs.appendFileSync(pdfFileName, pdfBytes);
   return pdfFileName;
 }

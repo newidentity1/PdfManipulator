@@ -12,15 +12,16 @@ function onCombinePdf() {
      }
      formData.append("pdf[]", JSON.stringify(file));
  }
- console.log(formData.getAll("pdf[]"));
+
  fetch("http://localhost:3000/", {
    method: "POST",
    body: formData,
  })
-   .then((res) => res.blob())
-   .then((blob) => {
-    // var file = window.URL.createObjectURL(blob);
-     //window.location.assign(file);
+   .then((response) => {
+         response.blob().then(function (blob) {
+             const mergedPdfUrl = window.URL.createObjectURL(blob);
+             downloadPdf(mergedPdfUrl);   
+         }); 
    });
 }
 
@@ -34,4 +35,13 @@ function onFileInputChange() {
         pdfListWrapper.append(pdfListElem);
     }
     document.getElementById("pdfs_selected").value = "";
+}
+
+function downloadPdf(url) {
+  var a = document.createElement("a");
+  a.href = url;
+  const filename = "merged.pdf";
+  a.setAttribute("download", filename);
+  a.click();
+  delete a;
 }
