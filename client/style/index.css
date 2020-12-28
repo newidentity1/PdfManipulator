@@ -1,12 +1,15 @@
-#filesWrapper {
-    width: 350px;
-    margin-left: 10px;
-}
-
 #filesList {
     width: 100%;
     height: 150px;
-    overflow-y: scroll;
+    border-top: hidden;
+}
+
+#dropFilesArea {
+    width: 350px;
+}
+
+#dropFilesArea.highlight form * {
+    background-color: blueviolet;
 }
 
 .list-group-items {

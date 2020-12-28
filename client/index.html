@@ -29,15 +29,17 @@
                 <option value="2">Français</option>
             </select>
         </div>
-        <form method="POST" action="http://localhost:3000/" enctype="multipart/form-data">
-            <div id="fileInput">
-                <label for="pdfs_selected">Select a pdf:</label>
-                <input type="file" id="pdfs_selected" name="pdfs_selected" accept="application/pdf" onchange="onFileInputChange()" multiple>
-            </div>
-        </form>
-        <div class="card" id="filesWrapper">
-            <ul class="list-group list-group-flush" id="filesList">
-            </ul>
+        <div id="dropFilesArea">
+            <form>
+                <div id="fileInput">
+                    <div class="card" id="filesWrapper">
+                        <label for="pdfSelected">Select a pdf:</label>
+                        <input type="file" id="pdfSelected" name="pdfSelected" accept="application/pdf" onchange="onFileInputChange()" multiple>
+                        <ul class="list-group list-group-flush" id="filesList">
+                        </ul>
+                    </div>
+                </div>
+            </form>
         </div>
         <div id="buttons">
             <button type="button" class="btn btn-primary" onclick="onCombinePdf()">Combine</button>

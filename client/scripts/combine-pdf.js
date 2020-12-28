@@ -26,7 +26,7 @@ function onCombinePdf() {
 }
 
 function onFileInputChange() {
-    var pdfAddedList = document.getElementById('pdfs_selected').files;
+    var pdfAddedList = document.getElementById('pdfSelected').files;
     const pdfListWrapper = document.getElementById("filesList");
     for (const pdf of pdfAddedList) {
         pdf.index = pdfList.length;
@@ -42,7 +42,7 @@ function onFileInputChange() {
         pdfListElem.append(button);
         pdfListWrapper.append(pdfListElem);
     }
-    document.getElementById("pdfs_selected").value = "";
+    document.getElementById("pdfSelected").value = "";
 }
 
 function downloadPdf(url) {
@@ -61,7 +61,7 @@ function onDeleteFile(fileIndex) {
     for (const pdf of pdfList) {
       pdfListWrapper.append(createPdfListElem(pdf, fileIndex)); 
     }
-    document.getElementById("pdfs_selected").value = "";
+    document.getElementById("pdfSelected").value = "";
 }
 
 function createPdfListElem(pdf, index=pdfList.length) {
@@ -85,3 +85,23 @@ function onResetFiles() {
     document.getElementById("filesList").innerHTML = '';
     onFileInputChange();
 }
+
+let dropFilesArea = document.getElementById("dropFilesArea");
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
+    dropFilesArea.addEventListener(event, function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const isEnterEvent = e.type == 'dragenter' || e.type == 'dragover';
+      if (isEnterEvent) 
+        dropFilesArea.classList.add('highlight');
+      else {
+        dropFilesArea.classList.remove('highlight');
+        if (e.type == 'drop') {
+          document.getElementById('pdfSelected').files = e.dataTransfer.files;
+          onFileInputChange();
+        }
+      }
+      
+    })
+});
+
