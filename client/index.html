@@ -1,9 +1,23 @@
+<!doctype html>
 <html>
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Pdf Manipulator</title>
     <script src="scripts/combine-pdf.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous" async></script>
+
+    <link href="./style/index.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -14,12 +28,12 @@
             <input type="file" id="pdfs_selected" name="pdfs_selected" accept="application/pdf" onchange="onFileInputChange()" multiple>
         </div>
     </form>
-    <div id="filesWrapper">
-        <ul id="filesList">
-
+    <div class="card" id="filesWrapper">
+        <ul class="list-group list-group-flush" id="filesList">
         </ul>
     </div>
     <button onclick="onCombinePdf()">Combine</button>
+    <button onclick="onResetFiles()">Reset</button>
 </body>
 
 </html>
