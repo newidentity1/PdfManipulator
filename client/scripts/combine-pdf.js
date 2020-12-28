@@ -33,7 +33,7 @@ function onFileInputChange() {
         pdfList.push(pdf);
         const pdfListElem = document.createElement("li")
         pdfListElem.className = "list-group-items";
-        pdfListElem.innerHTML = pdf.name;
+        pdfListElem.innerHTML = "<p>"+pdf.name+"</p>";
         const button = document.createElement('button');
         button.className = "deleteFileButton";
         button.innerHTML =
@@ -70,7 +70,7 @@ function createPdfListElem(pdf, index=pdfList.length) {
     }
     const pdfListElem = document.createElement("li");
     pdfListElem.className = "list-group-items";
-    pdfListElem.innerHTML = pdf.name;
+    pdfListElem.innerHTML = "<p>"+pdf.name+"</p>";
     const button = document.createElement("button");
     button.className = "deleteFileButton";
     button.innerHTML = '<span><i class="fa fa-trash"></i></span>';

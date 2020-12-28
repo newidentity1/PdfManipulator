@@ -21,19 +21,29 @@
 </head>
 
 <body>
-    <h1>Pdf Manipulator</h1>
-    <form method="POST" action="http://localhost:3000/" enctype="multipart/form-data">
-        <div>
-            <label for="pdfs_selected">Select a pdf:</label>
-            <input type="file" id="pdfs_selected" name="pdfs_selected" accept="application/pdf" onchange="onFileInputChange()" multiple>
+    <div>
+        <div id="header">
+            <h1 id="title">Pdf Manipulator</h1>
+            <select class="custom-select">
+                <option value="1">English</option>
+                <option value="2">Français</option>
+            </select>
         </div>
-    </form>
-    <div class="card" id="filesWrapper">
-        <ul class="list-group list-group-flush" id="filesList">
-        </ul>
+        <form method="POST" action="http://localhost:3000/" enctype="multipart/form-data">
+            <div id="fileInput">
+                <label for="pdfs_selected">Select a pdf:</label>
+                <input type="file" id="pdfs_selected" name="pdfs_selected" accept="application/pdf" onchange="onFileInputChange()" multiple>
+            </div>
+        </form>
+        <div class="card" id="filesWrapper">
+            <ul class="list-group list-group-flush" id="filesList">
+            </ul>
+        </div>
+        <div id="buttons">
+            <button type="button" class="btn btn-primary" onclick="onCombinePdf()">Combine</button>
+            <button type="button" class="btn btn-danger" onclick="onResetFiles()">Reset</button>
+        </div>
     </div>
-    <button onclick="onCombinePdf()">Combine</button>
-    <button onclick="onResetFiles()">Reset</button>
 </body>
 
 </html>
