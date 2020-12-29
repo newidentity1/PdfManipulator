@@ -4,7 +4,6 @@ const multer = require("multer");
 const PdfLib = require("pdf-lib");
 const path = require("path");
 const fs = require('fs');
-const { PDFFont } = require("pdf-lib");
 
 const PDFDocument = PdfLib.PDFDocument;
 const port = 3000;
@@ -37,7 +36,8 @@ async function createPdf(pdfFiles) {
   }
 
   const pdfBytes = await mergedPdfDoc.save();
-  const pdfFileName = "uploads/" + "merged" + Date.now() + ".pdf";
+  const pdfFileName =  "uploads/" + "merged" + Date.now() + ".pdf";
+  if (!fs.existsSync("uploads/")) fs.mkdirSync("uploads/");
   fs.appendFileSync(pdfFileName, pdfBytes);
   return pdfFileName;
 }
@@ -52,7 +52,9 @@ app.post("/", (req, res) => {
         .then(function (pdfFileName) {
           res.status(200);
           res.type("pdf");
-          res.download(pdfFileName);
+          res.download(pdfFileName, function(err) {
+            fs.rmdirSync("uploads/", {recursive:true});
+          });
         })
         .catch(function (err) {
           res.status(500);

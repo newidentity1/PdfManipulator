@@ -3,16 +3,28 @@
   "version": "1.0.0",
   "main": "client/index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
-  "author": "",
+  "author": "Yanis Toubal",
   "license": "ISC",
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.17.1",
     "file-system": "^2.2.2",
     "multer": "^1.4.2",
-    "pdf-lib": "^1.14.0"
+    "pdf-lib": "^1.14.0",
+    "sortablejs": "^1.10.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "11.1.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/newidentity1/PdfManipulator.git"
@@ -21,5 +33,32 @@
     "url": "https://github.com/newidentity1/PdfManipulator/issues"
   },
   "homepage": "https://github.com/newidentity1/PdfManipulator#readme",
-  "description": ""
+  "description": "application to manipulate pdfs",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "pdfmanipulator"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
 }
