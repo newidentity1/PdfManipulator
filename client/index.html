@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'">
 
     <title>Pdf Manipulator</title>
-    <script src="scripts/combine-pdf.js" async></script>
+    <script src="scripts/combine-pdf.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous" async></script>
+    <script src="../node_modules/sortablejs/Sortable.js"></script>
 
     <link href="./style/index.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -33,9 +35,13 @@
             <form>
                 <div id="fileInput">
                     <div class="card" id="filesWrapper">
-                        <label for="pdfSelected">Select a pdf:</label>
-                        <input type="file" id="pdfSelected" name="pdfSelected" accept="application/pdf" onchange="onFileInputChange()" multiple>
-                        <ul class="list-group list-group-flush" id="filesList">
+                        <div id="insertFilesWrapper">
+                            <!-- <button id="selectFilesButton" onclick="document.getElementById('pdfSelected').click()">Select files</button> -->
+                            <input type="file" id="pdfSelected" name="pdfSelected" accept="application/pdf" onchange="onFileInputChange()" multiple>
+                            <p>or</p>
+                            <h3 id="dropFiles">Drop your files here</h3>
+                        </div>
+                        <ul class="list-group" id="filesList">
                         </ul>
                     </div>
                 </div>
