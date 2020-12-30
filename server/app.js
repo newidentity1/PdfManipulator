@@ -27,6 +27,7 @@ app.use(express.urlencoded());
 
 
 async function createPdf(pdfFiles) {
+  if (pdfFiles == undefined || pdfFiles.length < 2) throw Error("atleast 2 files are needed!")
   const mergedPdfDoc = await PDFDocument.create();
   for (const pdfFileString of pdfFiles) {
     const pdfFile = JSON.parse(pdfFileString);
@@ -56,9 +57,9 @@ app.post("/", (req, res) => {
             fs.rmdirSync("uploads/", {recursive:true});
           });
         })
-        .catch(function (err) {
+        .catch(function (error) {
           res.status(500);
-          res.send(err.message);
+          res.send(error.message);
         });
     });
 
