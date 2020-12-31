@@ -15,10 +15,9 @@ const storage = multer.diskStorage({
   },
 
   filename: function (req, file, cb) {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
+    cb(null, 
+       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      );
   },
 });
 
@@ -27,8 +26,11 @@ app.use(express.urlencoded());
 
 
 async function createPdf(pdfFiles) {
-  if (pdfFiles == undefined || pdfFiles.length < 2) throw Error("atleast 2 files are needed!")
+  if (pdfFiles == undefined || pdfFiles.length < 2) 
+    throw Error("atleast 2 files are needed!")
+
   const mergedPdfDoc = await PDFDocument.create();
+
   for (const pdfFileString of pdfFiles) {
     const pdfFile = JSON.parse(pdfFileString);
     const pdf = await PDFDocument.load(fs.readFileSync(pdfFile["path"]));
@@ -40,6 +42,7 @@ async function createPdf(pdfFiles) {
   const pdfFileName =  "uploads/" + "merged" + Date.now() + ".pdf";
   if (!fs.existsSync("uploads/")) fs.mkdirSync("uploads/");
   fs.appendFileSync(pdfFileName, pdfBytes);
+
   return pdfFileName;
 }
 
@@ -47,9 +50,9 @@ app.post("/", (req, res) => {
     const uploadPdf = multer({
       storage: storage,
     }).array("pdf[]");
+
     uploadPdf(req, res, function(err) {
-      const files = req.body.pdf;
-      createPdf(files)
+      createPdf(req.body.pdf)
         .then(function (pdfFileName) {
           res.status(200);
           res.type("pdf");

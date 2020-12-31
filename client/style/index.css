@@ -12,6 +12,12 @@
     justify-content: center;
 }
 
+#dropFilesArea {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #insertFilesWrapper {
     text-align: center;
     border: 2px dashed gray;
@@ -21,8 +27,15 @@
 #insertFilesWrapper.highlight {
     border: 2px solid gray;
 }
+
 #insertFilesWrapper.highlight * {
     opacity: 0.5;
+}
+
+#fileInput {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
 }
 
 #selectFilesButton {
@@ -34,17 +47,15 @@
     cursor: pointer;
 }
 
+#dropFiles {
+    text-align: center;
+}
+
 #filesList {
     width: 100%;
     height: 350px;
     border-top: hidden;
     overflow-y: auto;
-}
-
-#dropFilesArea {
-    width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .list-group-item {
@@ -64,27 +75,17 @@
     margin-bottom: 0;
 }
 
+.deleteFileButton {
+    width: 30px;
+    height: 30px;
+}
+
 .placeholderPdf {
     background-color: rgb(45, 202, 45) !important;
 }
 
 .dragPreview {
     opacity: 0 !important;
-}
-
-.deleteFileButton {
-    width: 30px;
-    height: 30px;
-}
-
-#fileInput {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
-
-#dropFiles {
-    text-align: center;
 }
 
 #buttons {
