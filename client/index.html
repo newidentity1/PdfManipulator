@@ -26,15 +26,15 @@
     <div>
         <div id="header">
             <h1 id="title">Pdf Manipulator</h1>
-            <select class="custom-select" id="selectLanguage">
-                <option value="1">English</option>
-                <option value="2">Français</option>
+            <select class="custom-select" id="selectLanguage" onchange="changeLanguage(this)">
+                <option value="en">English</option>
+                <option value="fr">Français</option>
             </select>
             <nav class="navbar navbar-expand-lg bg-light" id="menu">
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div  id="navbarNav">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Combine Pdf<span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link disabled" href="#">Coming soon</a>
+                        <a class="nav-item nav-link active" href="#" data-translate="menuCombine">Combine Pdf<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link disabled" href="#" data-translate="menuComingSoon">Coming soon</a>
                     </div>
             </nav>
         </div>
@@ -43,10 +43,13 @@
                 <div id="fileInput">
                     <div class="card" id="filesWrapper">
                         <div id="insertFilesWrapper">
-                            <!-- <button id="selectFilesButton" onclick="document.getElementById('pdfSelected').click()">Select files</button> -->
-                            <input type="file" id="pdfSelected" name="pdfSelected" accept="application/pdf" onchange="onFileInputChange()" multiple>
-                            <h4 id="orInsertFiles">or</h4>
-                            <h3 id="dropFiles">Drop your files here</h3>
+
+                            <input type="file" id="pdfSelected" name="pdfSelected" accept="application/pdf" onchange="onFileInputChange()" multiple hidden>
+                            <button type="button" id="selectFilesButton">
+                            <label for="pdfSelected" data-translate="selectFiles">Select files</label>
+                            </button>
+                            <h4 id="orInsertFiles" data-translate="or">or</h4>
+                            <h3 id="dropFiles" data-translate="dropFilesHere">Drop your files here</h3>
                         </div>
                         <ul class="list-group list-group-flush" id="filesList">
                         </ul>
@@ -55,8 +58,8 @@
             </form>
         </div>
         <div id="buttons">
-            <button type="button" class="btn btn-primary" id="combineButton" onclick="onCombinePdf()">Combine</button>
-            <button type="button" class="btn btn-danger" onclick="onResetFiles()">Reset</button>
+            <button type="button" class="btn btn-primary" id="combineButton" onclick="onCombinePdf()" data-translate="combineButton">Combine</button>
+            <button type="button" class="btn btn-danger" onclick="onResetFiles()" data-translate="resetButton">Reset</button>
         </div>
     </div>
 </body>
