@@ -3,6 +3,14 @@
     margin-bottom: 30px;
 }
 
+#title {
+    color: orange;
+}
+
+#title span {
+    color: #004FB3;
+}
+
 #selectLanguage {
     margin-bottom: 10px;
 }
@@ -10,6 +18,19 @@
 #menu {
     display: flex;
     justify-content: center;
+    background-color: orange;
+}
+
+#menu div div a {
+    color: white;
+}
+
+.active {
+    color: #004FB3 !important;
+}
+
+.active:hover {
+    color: #013981 !important;
 }
 
 #dropFilesArea {
@@ -20,12 +41,14 @@
 
 #insertFilesWrapper {
     text-align: center;
-    border: 2px dashed gray;
+    border: 2px dashed#004FB3;
     padding: 5px;
+    padding-bottom: 50px;
+    color: #004FB3;
 }
 
 #insertFilesWrapper.highlight {
-    border: 2px solid gray;
+    border: 2px solid #004FB3;
 }
 
 #insertFilesWrapper.highlight * {
@@ -38,9 +61,15 @@
     margin: 10px;
 }
 
+#filesWrapper {
+    background-color: orange;
+}
+
 #selectFilesButton {
     width:150px;
     text-align: center;
+    background-color: #004FB3;
+    color: orange;
 }
 
 #selectFilesButton label {
@@ -63,7 +92,7 @@
     display: flex !important;
     flex-wrap: nowrap;
     justify-content: space-between;
-    padding: 0 5px !important;
+    padding: 5px !important;
     cursor: move;
 }
 
@@ -81,7 +110,7 @@
 }
 
 .placeholderPdf {
-    background-color: rgb(45, 202, 45) !important;
+    background-color: #004FB3 !important;
 }
 
 .dragPreview {
@@ -91,4 +120,9 @@
 #buttons {
     margin: 10px;
     text-align: center;
+}
+
+#combineButton {
+    background-color: orange;
+    color: #004FB3;
 }

@@ -7,32 +7,39 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'">
 
     <title>Pdf Manipulator</title>
+
     <script src="scripts/combine-pdf.js"></script>
     <script src="scripts/translate.js"></script>
+
+    <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous" async></script>
+        crossorigin="anonymous" async>
+    </script>
+
+    <!-- Sortable Script -->
     <script src="../node_modules/sortablejs/Sortable.js"></script>
 
+    <!-- Index CSS -->
     <link href="./style/index.css" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
 </head>
 
 <body>
     <div>
-
         <div id="header">
-            <h1 id="title">Pdf Manipulator</h1>
+            <h1 id="title">Pdf <span>Manipulator</span></h1>
             <select class="custom-select" id="selectLanguage" onchange="changeLanguage(this)">
                 <option value="en">English</option>
                 <option value="fr">Français</option>
             </select>
-            <nav class="navbar navbar-expand-lg bg-light" id="menu">
+            <nav class="navbar navbar-expand-lg" id="menu">
                 <div  id="navbarNav">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="#" data-translate="menuCombine">Combine Pdf<span class="sr-only">(current)</span></a>
@@ -50,7 +57,7 @@
 
                             <input type="file" id="pdfSelected" name="pdfSelected" accept="application/pdf" onchange="onFileInputChange()" multiple hidden>
 
-                            <button type="button" id="selectFilesButton">   
+                            <button type="button" class="btn btn-primary" id="selectFilesButton">   
                                 <label for="pdfSelected" data-translate="selectFiles">Select files</label>
                             </button>
                             <h4 id="orInsertFiles" data-translate="or">or</h4>
@@ -65,7 +72,7 @@
         </div>
 
         <div id="buttons">
-            <button type="button" class="btn btn-primary" id="combineButton" onclick="onCombinePdf()" data-translate="combineButton">Combine</button>
+            <button type="button btn-primary" class="btn" id="combineButton" onclick="onCombinePdf()" data-translate="combineButton">Combine</button>
             <button type="button" class="btn btn-danger" onclick="onResetFiles()" data-translate="resetButton">Reset</button>
         </div>
     </div>
